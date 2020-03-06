@@ -1,0 +1,23 @@
+{
+  "name": "websocket-challenge",
+  "version": "1.0.0",
+  "description": "Websocket Coding Challenge for Workhorse",
+  "main": "lib/server/server.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "start": "start node lib/server/server.js && start node lib/client/client.js"
+  },
+  "keywords": [],
+  "author": "Amar Kacheria",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amarkacheria/workhorse.git"
+  },
+  "dependencies": {
+    "http": "0.0.0",
+    "ws": "^7.2.1"
+  }
+}

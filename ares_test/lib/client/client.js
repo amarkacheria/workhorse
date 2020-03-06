@@ -24,3 +24,24 @@ const drone = {
         connection: null
 	}
 };
+
+drone.ws_socket(drone);
+
+var time = function() {
+	return new Date().getMilliseconds();
+};
+
+drone.ws_client.connection.on('open', function() {
+	console.log('Client connection opened : ' + time());
+	drone.ws_client.connection.send(JSON.stringify(drone.drone_gps), function (error) {
+		if (error) {
+			console.log('Error sending drone gps coordinates : ' + time());
+		} else {
+			console.log('Successfully sent drone gps coordinates : ' + time());
+		}
+	});
+});
+
+drone.ws_client.connection.on('message', function(message) {
+	console.log('Message from server : ' + message + ' : ' + time());
+});
