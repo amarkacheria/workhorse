@@ -28,6 +28,8 @@ const drone = {
 drone.ws_socket(drone);
 
 var time = function() {
+	// returning milliseconds to easily guage the sequence of events for one connection
+	// can be changed to date-time for better logging for multiple connections
 	return new Date().getMilliseconds();
 };
 
@@ -43,5 +45,7 @@ drone.ws_client.connection.on('open', function() {
 });
 
 drone.ws_client.connection.on('message', function(message) {
-	console.log('Message from server : ' + message + ' : ' + time());
+	console.log('Message received from server : ' + time());
+	console.log('Server Message: ');
+	console.log(JSON.parse(message));
 });

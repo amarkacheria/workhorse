@@ -26,8 +26,11 @@ console.log('Websocket started on ' + server.port + ' : ' + time());
 
 websocketServer.on('connection', function(ws) {
     ws.on('message', function(message) {
-		console.log('Message from drone : ' + message + ' : ' + time());
-		ws.send('Server acknowledgment', function(error) {
+		console.log('Message received from drone : ' + time());
+		console.log('Drone Message: ');
+		console.log(JSON.parse(message));
+		var ack = { serverMessage: 'Acknowledged' };
+		ws.send(JSON.stringify(ack), function(error) {
 			if (error) {
 				console.log('Error sending acknowledgment to drone: ' + time());
 			} else {
